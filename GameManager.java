@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameManager {
-	ArrayList<Player> players;
-	ArrayList<Place> places;
-	Player player;
-	Place place;
-	Scanner scan;
+	private ArrayList<Player> players;
+	private ArrayList<Place> places;
+	private Player player;
+	private Place place;
+	private Scanner scan;
 	
 	public GameManager(ArrayList<Player> players, ArrayList<Place> places) {
 		this.players = players;
@@ -37,7 +37,7 @@ public class GameManager {
 			
 			// 지갑 체크
 			if( this.checkBudget() ) {
-				System.out.println(player.name + "가 패배했습니다.");
+				System.out.println(player.getName() + "가 패배했습니다.");
 				return false;
 			}
 			
@@ -58,17 +58,17 @@ public class GameManager {
 	
 	public void rollDice() {
 		int num = player.rollDice();
-		player.currentIdx = (player.currentIdx + num) % places.size();
-		place = places.get(player.currentIdx);
+		player.setCurrentIdx((player.getCurrentIdx() + num) % places.size());
+		place = places.get(player.getCurrentIdx());
 		player.setPlace(place);
 		System.out.print(player.getName() + "의 주사위: " + num);
 		System.out.println(", 도착 장소: " + place.getName());
 	}
 	
 	public boolean checkBudget() {
-		player.budget = player.budget - player.place.getTex();
-		System.out.println("현재 자금: " + player.budget);
-		if( player.budget <= 0 ) {
+		player.setBudget(player.getBudget() - player.place.getTex());
+		System.out.println("현재 자금: " + player.getBudget());
+		if( player.getBudget() <= 0 ) {
 			return true;
 		}
 		else {
@@ -101,18 +101,18 @@ public class GameManager {
 		// 다음 턴에 효과가 적용됨
 		if(impact.equals("Forset")) {
 			System.out.println("숲에서 열매를 주워 팔았습니다. (+ 20)");
-			player.budget = player.budget + 20;
+			player.setBudget(player.getBudget() + 20);
 		}
 		else if(impact.equals("Volcano")) {
 			System.out.println("화산에서 물을 사먹었습니다. (- 20)");
 		}
 		else if(impact.equals("Desert")) {
-			System.out.println("낙타를 타고 갑니다. (다음 턴 주사위 +1)");
-			player.currentIdx = player.currentIdx + 1;
+			System.out.println("낙타를 타고 갑니다. (다음 턴 이동: 주사위 +1)");
+			player.setCurrentIdx(player.getCurrentIdx() + 1);
 		}
 		else if(impact.equals("SnowMountain")) {
-			System.out.println("추워서 움직이 느려집니다. (다음 턴 주사위 -1)");
-			player.currentIdx = player.currentIdx - 1;
+			System.out.println("추워서 움직이 느려집니다. (다음 턴 이동: 주사위 -1)");
+			player.setCurrentIdx(player.getCurrentIdx() + 1);
 		}
 	}
 	
@@ -120,7 +120,7 @@ public class GameManager {
 		int mf = player.place.MisfortuneCase();
 		if(mf > 0) {
 			System.out.println("병에 걸려 치료비를 소모했습니다.");
-			player.budget = player.budget - mf;
+			player.setBudget(player.getBudget() - mf);
 		}
 	}
 }

@@ -3,10 +3,10 @@ import tex.*;
 import localImpact.*;
 
 public class SnowMountain extends Place{
-	PlaceFactory pf;
-	Misfortune mf;
-	Tex tex;
-	LocalImpact lm;
+	private PlaceFactory pf;
+	private Misfortune mf;
+	private Tex tex;
+	private LocalImpact lm;
 	
 	public SnowMountain(PlaceFactory pf) {
 		this.pf = pf;

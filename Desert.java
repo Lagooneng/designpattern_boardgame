@@ -3,10 +3,10 @@ import tex.*;
 import localImpact.*;
 
 public class Desert extends Place{
-	PlaceFactory pf;
-	Misfortune mf;
-	Tex tex;
-	LocalImpact lm;
+	private PlaceFactory pf;
+	private Misfortune mf;
+	private Tex tex;
+	private LocalImpact lm;
 	
 	public Desert(PlaceFactory pf) {
 		this.pf = pf;

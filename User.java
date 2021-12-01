@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
 public class User extends Player{
-	Scanner scan = new Scanner(System.in);
+	private Scanner scan;
 	
 	public User() {
 		this.name = "User";
+		scan = new Scanner(System.in);
 	}
 
 	@Override

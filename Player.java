@@ -1,14 +1,15 @@
 
 public abstract class Player {
-	int budget;
-	int currentIdx;
-	Place place;
-	String name;
+	private int budget;
+	private int currentIdx;
+	protected String name;
+	public Place place;
 	
 	public Player() {
 		this.budget = 500;					// 초기 소지금 500
 		this.currentIdx = 0;
 	}
+	
 	
 	public String getName() {
 		return this.name;
@@ -21,6 +22,16 @@ public abstract class Player {
 	public int getBudget() {
 		return budget;
 	}
+	public void setBudget(int budget) {
+		this.budget = budget;
+	}
+	public int getCurrentIdx() {
+		return this.currentIdx;
+	}
+	public void setCurrentIdx(int idx) {
+		this.currentIdx = idx;
+	}
+	
 	
 	public void damegedByTrap() {
 		if( place.hasTrap() ) {

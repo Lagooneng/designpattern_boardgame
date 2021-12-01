@@ -3,10 +3,10 @@ import tex.*;
 import localImpact.*;
 
 public class Volcano extends Place {
-	PlaceFactory pf;
-	Misfortune mf;
-	Tex tex;
-	LocalImpact lm;
+	private PlaceFactory pf;
+	private Misfortune mf;
+	private Tex tex;
+	private LocalImpact lm;
 	
 	public Volcano(PlaceFactory pf) {
 		this.pf = pf;

@@ -1,6 +1,6 @@
 
 public abstract class Place {
-	boolean trap;
+	private boolean trap;
 	
 	public Place() {
 		trap = false;
@@ -12,12 +12,12 @@ public abstract class Place {
 	public abstract String getName();
 	
 	public void setTrap() {
-		trap = true;
+		this.trap = true;
 	}
 	public boolean hasTrap() {
 		return trap;
 	}
 	public void removeTrap() {
-		trap = false;
+		this.trap = false;
 	}
 }
