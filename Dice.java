@@ -1,5 +1,6 @@
 import java.util.Random;
 
+// 싱글턴 패턴
 public class Dice {
 	private volatile static Random random = null;
 	

@@ -1,17 +1,14 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GameManager {
 	private ArrayList<Player> players;
 	private ArrayList<Place> places;
 	private Player player;
 	private Place place;
-	private Scanner scan;
 	
 	public GameManager(ArrayList<Player> players, ArrayList<Place> places) {
 		this.players = players;
 		this.places = places;
-		this.scan =  new Scanner(System.in);
 	}
 	
 	public boolean action() {
@@ -23,33 +20,14 @@ public class GameManager {
 			// 주사위 굴리기
 			this.rollDice();
 			
-			// 트랩 대미지
-			this.damegedByTrap();
-						
-			// 트랩 설치
-			this.setTrap();
-						
-			// 지역 특수 효과
-			this.localImpact();
+			if(!player.action()) return false;
 			
-			// 운이 나쁨
-			this.misfortune();
-			
-			// 지갑 체크
-			if( this.checkBudget() ) {
-				System.out.println(player.getName() + "가 패배했습니다.");
-				return false;
-			}
-			
-			
-			System.out.println();
-			/*
 			try {
 				Thread.sleep(800);
 			} catch(InterruptedException e) {
 				System.out.println(e.getMessage());
 			}
-			*/
+			
 		}
 		
 		return true;
@@ -62,65 +40,15 @@ public class GameManager {
 		place = places.get(player.getCurrentIdx());
 		player.setPlace(place);
 		System.out.print(player.getName() + "의 주사위: " + num);
-		System.out.println(", 도착 장소: " + place.getName());
-	}
-	
-	public boolean checkBudget() {
-		player.setBudget(player.getBudget() - player.place.getTex());
-		System.out.println("현재 자금: " + player.getBudget());
-		if( player.getBudget() <= 0 ) {
-			return true;
+		
+		int money = place.getTex();
+		if(money < 0) {
+			System.out.println(", 도착 장소: " + place.getName() + ", 보너스" + (-place.getTex()) +", 넘버: " + player.getCurrentIdx());
 		}
 		else {
-			return false;
+			System.out.println(", 도착 장소: " + place.getName() + ", 통행료" + place.getTex() +", 넘버: " + player.getCurrentIdx());
 		}
 	}
 	
-	public void damegedByTrap() {
-		player.damegedByTrap();
-	}
 	
-	public void setTrap() {
-		if( !place.hasTrap() ) {
-			if(player.getName().equals("User")) {
-				System.out.print("트랩을 설치하겠습니까? (y): ");
-				if( scan.nextLine() == "y" )  {
-					player.setTrap();
-				}
-			}
-			else {
-				player.setTrap();
-			}
-			
-		}
-	}
-	
-	public void localImpact() {
-		String impact = player.place.localImpact();
-		
-		// 다음 턴에 효과가 적용됨
-		if(impact.equals("Forset")) {
-			System.out.println("숲에서 열매를 주워 팔았습니다. (+ 20)");
-			player.setBudget(player.getBudget() + 20);
-		}
-		else if(impact.equals("Volcano")) {
-			System.out.println("화산에서 물을 사먹었습니다. (- 20)");
-		}
-		else if(impact.equals("Desert")) {
-			System.out.println("낙타를 타고 갑니다. (다음 턴 이동: 주사위 +1)");
-			player.setCurrentIdx(player.getCurrentIdx() + 1);
-		}
-		else if(impact.equals("SnowMountain")) {
-			System.out.println("추워서 움직이 느려집니다. (다음 턴 이동: 주사위 -1)");
-			player.setCurrentIdx(player.getCurrentIdx() + 1);
-		}
-	}
-	
-	public void misfortune() {
-		int mf = player.place.MisfortuneCase();
-		if(mf > 0) {
-			System.out.println("병에 걸려 치료비를 소모했습니다.");
-			player.setBudget(player.getBudget() - mf);
-		}
-	}
 }

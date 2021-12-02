@@ -9,6 +9,9 @@ public class Main {
 		players.add(new User());
 		players.add(new Computer());
 		
+		StartAdapter sa = new StartAdapter(new Start());
+		places.add(sa);
+		
 		PlaceMaker pm = new NormalPlaceMaker();
 		for(int i = 0; i < 9; i++) {
 			places.add(pm.createPlace("Forest"));
