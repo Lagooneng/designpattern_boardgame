@@ -46,7 +46,7 @@ public abstract class Player {
 			this.setCurrentIdx(this.getCurrentIdx() + 1);
 		}
 		else if(impact.equals("SnowMountain")) {
-			System.out.println("추워서 움직이 느려집니다. (다음 턴 이동: 주사위 -1)");
+			System.out.println("추워서 움직임이 느려집니다. (다음 턴 이동: 주사위 -1)");
 			this.setCurrentIdx(this.getCurrentIdx() + 1);
 		}
 		else if(impact.equals("NoImpact")) {
