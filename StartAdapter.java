@@ -22,7 +22,7 @@ public class StartAdapter extends Place{
 	}
 
 	@Override
-	public int MisfortuneCase() {
+	public int misfortuneCase() {
 		return mf.getMisfortune();
 	}
 

@@ -21,7 +21,7 @@ public abstract class Player {
 		localImpact();
 		misfortune();
 		// 훅
-		if( this.checkBudget() ) {
+		if( checkBudget() ) {
 			System.out.println(this.getName() + "가 패배했습니다.");
 			return false;
 		}
@@ -55,7 +55,7 @@ public abstract class Player {
 	}
 	
 	public void misfortune() {
-		int mf = this.place.MisfortuneCase();
+		int mf = this.place.misfortuneCase();
 		if(mf > 0) {
 			System.out.println("병에 걸려 치료비를 소모했습니다.");
 			this.setBudget(this.getBudget() - mf);

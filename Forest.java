@@ -1,12 +1,6 @@
-import misfortune.*;
-import tex.*;
 import localImpact.*;
 
 public class Forest extends Place {
-	private PlaceFactory pf;
-	private Misfortune mf;
-	private Tex tex;
-	private LocalImpact lm;
 	
 	public Forest(PlaceFactory pf) {
 		this.pf = pf;
@@ -27,7 +21,7 @@ public class Forest extends Place {
 	}
 
 	@Override
-	public int MisfortuneCase() {
+	public int misfortuneCase() {
 		return mf.getMisfortune();
 	}
 
