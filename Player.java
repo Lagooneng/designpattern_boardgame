@@ -1,3 +1,4 @@
+// 템플릿 메소드, 스트라티지 패턴 적용
 
 public abstract class Player {
 	private int budget;
@@ -10,7 +11,7 @@ public abstract class Player {
 		this.currentIdx = 0;
 	}
 	
-	public abstract int rollDice();
+	public abstract int rollDice();	// 스트라티지 패턴
 	public abstract void setTrap();
 	
 	// 템플릿 메소드 패턴

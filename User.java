@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+//템플릿 메소드, 스트라티지 패턴 적용
 public class User extends Player{
 	private Scanner scan;
 	

@@ -1,5 +1,6 @@
 import localImpact.*;
 
+//추상 팩토리 패턴
 public class SnowMountain extends Place{
 	
 	public SnowMountain(PlaceFactory pf) {

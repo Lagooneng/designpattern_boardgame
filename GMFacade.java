@@ -1,4 +1,4 @@
-
+// 파사드 패턴
 public class GMFacade {
 	GameManager gm;
 	

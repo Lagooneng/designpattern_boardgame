@@ -1,5 +1,6 @@
 import localImpact.*;
 
+//추상 팩토리 패턴
 public class Desert extends Place{
 	
 	public Desert(PlaceFactory pf) {
