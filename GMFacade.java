@@ -1,0 +1,12 @@
+
+public class GMFacade {
+	GameManager gm;
+	
+	public GMFacade() {
+		gm = new GameManager();
+	}
+	
+	public void gameOn() {
+		while(gm.action());
+	}
+}

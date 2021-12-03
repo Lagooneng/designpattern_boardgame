@@ -45,10 +45,6 @@ public class GameManager {
 		places.add(pm.createPlace("SnowMountain"));
 	}
 	
-	public void gameOn() {
-		while(this.action());
-	}
-	
 	public boolean action() {
 		int size = players.size();
 		

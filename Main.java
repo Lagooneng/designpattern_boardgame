@@ -1,8 +1,8 @@
 public class Main {
 
 	public static void main(String[] args) {
-		GameManager gm = new GameManager();
-		gm.gameOn();
+		GMFacade facade = new GMFacade();
+		facade.gameOn();
 	}
 
 }
